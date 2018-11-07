@@ -1,0 +1,25 @@
+stages:
+- name: compile
+  steps:
+  - runScriptConfig:
+      image: hub.tansun.com/test/maven:3.6
+      shellScript: mvn clean package
+- name: publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: helloworld:1.0-SNAPSHOT
+      pushRemote: true
+      registry: hub.tansun.com
+    env:
+      PLUGIN_DEBUG: "true"
+      PLUGIN_INSECURE: "true"
+- name: deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
+timeout: 60
+branch:
+  include:
+  - master

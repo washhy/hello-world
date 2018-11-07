@@ -2,7 +2,7 @@ stages:
 - name: compile
   steps:
   - runScriptConfig:
-      image: hub.tansun.com/test/maven:3.6
+      image: 192.168.75.135/test/maven:3.6
       shellScript: mvn clean package
 - name: publish
   steps:
@@ -11,7 +11,7 @@ stages:
       buildContext: .
       tag: helloworld:1.0-SNAPSHOT
       pushRemote: true
-      registry: hub.tansun.com
+      registry: 192.168.75.135
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"

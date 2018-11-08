@@ -2,12 +2,15 @@ stages:
 - name: compile
   steps:
   - runScriptConfig:
+      image: hub.tansun.com/test/java:8
+- name: compile
+  steps:
+  - runScriptConfig:
       image: hub.tansun.com/test/maven:3.6
       shellScript: mvn clean package
 - name: publish
   steps:
   - publishImageConfig:
-      shellScript: echo "192.168.75.135 hub.tansun.com" >> /etc/hosts
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: hello-world:${CICD_EXECUTION_SEQUENCE}

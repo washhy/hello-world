@@ -2,19 +2,14 @@ stages:
 - name: compile
   steps:
   - runScriptConfig:
-      image: 192.168.75.135/test/maven:3.6
+      image: hub.tansun.com/test/maven
       shellScript: mvn clean package
 - name: publish
   steps:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: helloworld:1.0-SNAPSHOT
-      pushRemote: true
-      registry: 192.168.75.135
-    env:
-      PLUGIN_DEBUG: "true"
-      PLUGIN_INSECURE: "true"
+      tag: hello-world:${CICD_EXECUTION_SEQUENCE}
 - name: deploy
   steps:
   - applyYamlConfig:

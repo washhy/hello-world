@@ -2,7 +2,7 @@ stages:
 - name: compile
   steps:
   - runScriptConfig:
-      image: 192.168.75.135/test/maven:3.6
+      image: hub.tansun.com/test/maven:3.6
       shellScript: mvn clean package
 - name: publish
   steps:

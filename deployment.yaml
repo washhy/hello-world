@@ -15,12 +15,12 @@ spec:
         app: hello-server
     spec:
       containers:
-       - image: hub.tansun.com/helloworld:1.0-SNAPSHOT
+       - image: hello-world:${CICD_EXECUTION_SEQUENCE}
          imagePullPolicy: IfNotPresent
          name: hello-server
          resources:
           requests:
-            memory: "512Mi"
+            memory: "256Mi"
             cpu: "200m"
           limits:
             memory: "512Mi"

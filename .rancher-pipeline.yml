@@ -2,6 +2,7 @@ stages:
 - name: cp-certs
   steps:
   - runScriptConfig:
+      image: hub.tansun.com/test/maven:3.6
       shellScript: 'cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com'
 - name: publish
   steps:

@@ -7,7 +7,6 @@ stages:
 - name: publish
   steps:
   - publishImageConfig:
-      args: -v /etc/docker/certs.d/hub.tansun.com/:/etc/docker/certs.d/hub.tansun.com/
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: hello-world:${CICD_EXECUTION_SEQUENCE}

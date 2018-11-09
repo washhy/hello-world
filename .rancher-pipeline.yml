@@ -1,4 +1,8 @@
 stages:
+- name: compile
+  steps:
+  - runScriptConfig:
+      shellScript: cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com
 - name: publish
   steps:
   - publishImageConfig:

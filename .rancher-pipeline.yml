@@ -3,12 +3,12 @@ stages:
   steps:
   - runScriptConfig:
       image: hub.tansun.com/test/maven:3.6
-      shellScript: 'cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com && mvn clean package'
+      shellScript: 'cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com'
 - name: publish
   steps:
   - publishImageConfig:
       shellScript: cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com
-      dockerfilePath: ./Dockerfile
+      dockerfilePath: -v /etc/docker/certs.d/:/etc/docker/certs.d/ ./Dockerfile
       buildContext: .
       tag: hello-world:${CICD_EXECUTION_SEQUENCE}
       env:

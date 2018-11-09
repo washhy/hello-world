@@ -3,7 +3,7 @@ stages:
   steps:
   - runScriptConfig:
       image: hub.tansun.com/test/maven:3.6
-      shellScript: 'cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com'
+      shellScript: 'cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com && mvn clean package'
 - name: publish
   steps:
   - publishImageConfig:

@@ -1,14 +1,15 @@
 stages:
-- name: cp-certs
+- name: compile
   steps:
   - runScriptConfig:
       image: hub.tansun.com/test/maven:3.6
-      shellScript: 'mvn clean package'
-- name: cp-certs
+      shellScript: mvn clean package
+- name: publish
   steps:
-  - runScriptConfig:
-      image: rancher/jenkins-plugins-docker:17.12
-      shellScript: 'cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com && docker  login -u admin -p Harbor12345  hub.tansun.com && docker  tag hello-world:1.0-SNAPSHOT  hub.tansun.com/test/hello-world:1.0-SNAPSHOT && docker  push hub.tansun.com/test/hello-world:1.0-SNAPSHOT'
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: hello-world:${CICD_EXECUTION_SEQUENCE}
 - name: deploy
   steps:
   - applyYamlConfig:

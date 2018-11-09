@@ -8,7 +8,7 @@ stages:
   steps:
   - publishImageConfig:
       shellScript: cp -r hub.tansun.com /etc/docker/certs.d/hub.tansun.com
-      dockerfilePath: -v /etc/docker/certs.d/:/etc/docker/certs.d/ ./Dockerfile
+      dockerfilePath: ./Dockerfile -v /etc/docker/certs.d/:/etc/docker/certs.d/ 
       buildContext: .
       tag: hello-world:${CICD_EXECUTION_SEQUENCE}
       env:

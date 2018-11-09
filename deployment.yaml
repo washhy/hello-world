@@ -15,7 +15,7 @@ spec:
         app: hello-server
     spec:
       containers:
-       - image: hello-world:${CICD_EXECUTION_SEQUENCE}
+       - image: hub.tansun.com/test/hello-world:1.0-SNAPSHOT
          imagePullPolicy: IfNotPresent
          name: hello-server
          resources:

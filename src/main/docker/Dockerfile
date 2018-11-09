@@ -1,4 +1,4 @@
-FROM java:8
+FROM hub.tansun.com/test/java:8
 VOLUME /tmp
 ADD helloworld-1.0-SNAPSHOT.jar app.jar
 RUN bash -c 'touch /app.jar'

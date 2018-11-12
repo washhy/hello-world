@@ -2,8 +2,8 @@ stages:
 - name: compile
   steps:
   - runScriptConfig:
-      image: hub.tansun.com/test/java:8
-      shellScript: 'docker tag hub.tansun.com/test/java:8 ${DOCKER_REGISTRY}/java:8 && docker push ${DOCKER_REGISTRY}/java:8'
+      image: rancher/jenkins-plugins-docker:17.12
+      shellScript: 'docker pull hub.tansun.com/test/java:8 && docker tag hub.tansun.com/test/java:8 ${DOCKER_REGISTRY}/java:8 && docker push ${DOCKER_REGISTRY}/java:8'
 - name: publish
   steps:
   - publishImageConfig:

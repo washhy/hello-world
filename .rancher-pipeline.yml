@@ -2,8 +2,8 @@ stages:
 - name: compile
   steps:
   - runScriptConfig:
-      image: hub.tansun.com/test/maven:3.6
-      shellScript: mvn clean package
+      image: hub.tansun.com/test/java:8
+      shellScript: 'docker tag hub.tansun.com/test/java:8 ${DOCKER_REGISTRY}/java:8 && docker push ${DOCKER_REGISTRY}/java:8'
 - name: publish
   steps:
   - publishImageConfig:

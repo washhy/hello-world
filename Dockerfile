@@ -1,4 +1,4 @@
-FROM hub.tansun.com/test/java:8
+FROM hub.${DOCKER_REGISTRY}/java:8
 ADD target/helloworld-*.jar app.jar
 RUN bash -c 'touch /app.jar'
 ENV JAVA_OPTS -Xms512m -Xmx512m

@@ -1,9 +1,4 @@
 stages:
-- name: compile
-  steps:
-  - runScriptConfig:
-      image: docker:latest
-      shellScript: 'docker pull hub.tansun.com/test/java:8 && docker tag hub.tansun.com/test/java:8 ${DOCKER_REGISTRY}/java:8 && docker push ${DOCKER_REGISTRY}/java:8'
 - name: publish
   steps:
   - publishImageConfig:

@@ -9,7 +9,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: test/hello-world:${CICD_EXECUTION_SEQUENCE}
+      tag: test/hello-world:1.0
       pushRemote: true
       registry: hub.tansun.com
 - name: deploy

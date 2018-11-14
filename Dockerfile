@@ -1,4 +1,4 @@
-FROM myjava:8
+FROM 192.168.75.143:5000/java:8
 ADD target/helloworld-*.jar app.jar
 RUN bash -c 'touch /app.jar'
 ENV JAVA_OPTS -Xms512m -Xmx512m

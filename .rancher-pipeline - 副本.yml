@@ -9,12 +9,18 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: hello-world:${CICD_EXECUTION_SEQUENCE}
+      tag: test/hello-world:1.0
+      pushRemote: true
+      registry: hub.tansun.com
+  env:
+      PLUGIN_DEBUG: "true"
+      PLUGIN_INSECURE: "true"
 - name: deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+  env:
+      PLUGIN_DEBUG: "true"
+      PLUGIN_INSECURE: "true"
 timeout: 120
-branch:
-  include:
-  - master
+branch: {}
